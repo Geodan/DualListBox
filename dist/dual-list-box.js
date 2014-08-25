@@ -91,17 +91,11 @@
                     text = item[options.text];
                 }
 
-                console.log(options.value);
-                console.log(item[options.value]);
-
                 $('<option>', {
                     value: item[options.value],
                     text: text,
                     selected: (selected.some(function (e) { return e[options.value] === item[options.value] }) === true)
                 }).appendTo(options.element);
-
-//                $(options.element).append($('<option>').val(item[options.value]).text(text)
-//                    .prop('selected', (selected.some(function (e) { return e[options.value] === item[options.value] }) === true)));
             });
 
             construct(options);
