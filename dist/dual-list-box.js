@@ -33,6 +33,7 @@
                 textLength: 45,                 // Maximum text length that is displayed in the select.
                 moveAllBtn: true,               // Whether the append all button is available.
                 maxAllBtn:  500,                // Maximum size of list in which the all button works without warning. See below.
+                selectClass:'form-control',
                 warning:    'Are you sure you want to move this many items? Doing so can cause your browser to become unresponsive.'
             };
 
@@ -47,7 +48,8 @@
                 horizontal: $(this).data('horizontal'),
                 textLength: $(this).data('textLength'),
                 moveAllBtn: $(this).data('moveAllBtn'),
-                maxAllBtn:  $(this).data('maxAllBtn')
+                maxAllBtn:  $(this).data('maxAllBtn'),
+                selectClass:$(this).data('selectClass')
             };
 
             var options = $.extend({}, defaults, htmlOptions, paramOptions);
@@ -189,14 +191,14 @@
                 '       <h4><span class="unselected-title"></span> <small>- showing <span class="unselected-count"></span></small></h4>' +
                 '       <input class="filter form-control filter-unselected" type="text" placeholder="Filter" style="margin-bottom: 5px;">' +
                 (options.horizontal == false ? '' : createHorizontalButtons(1, options.moveAllBtn)) +
-                '       <select class="unselected" style="height: 200px; width: 100%;" multiple></select>' +
+                '       <select class="unselected ' + options.selectClass + '" style="height: 200px; width: 100%;" multiple></select>' +
                 '   </div>' +
                 (options.horizontal == false ? createVerticalButtons(options.moveAllBtn) : '') +
                 (options.horizontal == false ? '   <div class="col-md-5">' : '   <div class="col-md-6">') +
                 '       <h4><span class="selected-title"></span> <small>- showing <span class="selected-count"></span></small></h4>' +
                 '       <input class="filter form-control filter-selected" type="text" placeholder="Filter" style="margin-bottom: 5px;">' +
                 (options.horizontal == false ? '' : createHorizontalButtons(2, options.moveAllBtn)) +
-                '       <select class="selected" style="height: 200px; width: 100%;" multiple></select>' +
+                '       <select class="selected ' + options.selectClass + '" style="height: 200px; width: 100%;" multiple></select>' +
                 '   </div>');
 
         $(options.parentElement + ' .selected').prop('name', $(options.element).prop('name'));
